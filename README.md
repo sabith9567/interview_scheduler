@@ -9,10 +9,10 @@ POST METHOD
 
 PARAMS  
 
-user
-start_time
-end_time
-available_date
+user, 
+start_time, 
+end_time, 
+available_date, 
 
 Creates time slot for candidate/interviewer
 
@@ -21,7 +21,7 @@ POST METHOD
 
 PARAMS
 
-candidate_id
+candidate_id, 
 interviewer_id
 
 Filter and return the available time slots of both interviewer and candidate
