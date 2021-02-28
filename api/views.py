@@ -37,8 +37,15 @@ class GetTimeSlots(APIView):
                     if candidate_time_slot_by_date.get(date):
                         for time_range_1 in slots:
                             for time_range_2 in candidate_time_slot_by_date.get(date):
-                                if time_range_1.is_intersection(time_range_2):
-                                    available_slots.append(time_range_1.intersection(time_range_2))
+                                try:
+                                    if time_range_1.is_intersection(time_range_2):
+                                        available_slots.append(time_range_1.intersection(time_range_2))
+                                except Exception as e:
+                                    return Response(data={
+                                        'message': str(e)+' please use api for registering time slots , this is beacuse '
+                                                          'your entry through admin for the candidate or interviewer '
+                                                          'has end_time < start_time'}, status=status.HTTP_400_BAD_REQUEST)
+
                     available_slots_by_date[date] = available_slots
 
                 data = get_time_slot_by_date(available_slots_by_date)
