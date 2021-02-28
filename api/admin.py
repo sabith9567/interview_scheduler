@@ -7,5 +7,5 @@ from api.models import *
 class UsersAdmin(BaseUserAdmin):
     list_display = ['id', "username", "is_interviewer"]
 
-admin.site.register(CustomUser)
+admin.site.register(CustomUser, UsersAdmin)
 admin.site.register(TimeSlot)
